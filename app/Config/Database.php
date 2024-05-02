@@ -26,7 +26,7 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'localhost',
+        'hostname'     => 'host.docker.internal',
         'username'     => 'root',
         'password'     => '',
         'database'     => 'chat',
