@@ -1,4 +1,5 @@
-version: '3'
+name: monchat
+
 services:
   app:
     build:
@@ -6,12 +7,31 @@ services:
       dockerfile: Dockerfile
     image: chat
     ports:
-    - 89:80
-  mysql:
-    image: mysql:latest
-    container_name: BDD
-    ports:
-      - 3306:3306
+      - 89:80
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=chat
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: chat
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: chat
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - 13306:3306
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  dbdata:

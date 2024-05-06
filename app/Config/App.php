@@ -16,7 +16,7 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    public string $baseURL = 'monChat';
+    public string $baseURL = 'mon_chat/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
